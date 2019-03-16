@@ -13,6 +13,10 @@ namespace PeopleSearch
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
+            RouteTable.Routes.Ignore("api*");
+            RouteTable.Routes.MapPageRoute("AngularRoute", "{*route}", "~/UI/build/index.html");
+            RouteTable.Routes.MapPageRoute("AngularRouteWithParam", "*/{route}/{id}", "~/UI/build/index.html");
+
             AutoMapperConfiguration.Configure();
         }
     }

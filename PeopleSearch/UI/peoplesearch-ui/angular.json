@@ -13,8 +13,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/peoplesearch-ui",
+            "outputPath": "dist",
             "index": "src/index.html",
+            "deployUrl": "UI/build/",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
