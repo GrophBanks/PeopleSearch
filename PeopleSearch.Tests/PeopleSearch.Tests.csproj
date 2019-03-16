@@ -76,7 +76,6 @@
   <ItemGroup>
     <Compile Include="ContextManager_Tests.cs" />
     <Compile Include="PersonService_Tests.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -84,13 +83,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\PeopleSearch.Entity\PeopleSearch.Entity.csproj">
-      <Project>{7c6d7732-7cf4-4fa5-8476-21a94e062093}</Project>
-      <Name>PeopleSearch.Entity</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PeopleSearch.Business\PeopleSearch.Business.csproj">
       <Project>{dc69d930-0eb6-41cd-a7a6-406dd48502c7}</Project>
       <Name>PeopleSearch.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PeopleSearch.Entity\PeopleSearch.Entity.csproj">
+      <Project>{7C6D7732-7CF4-4FA5-8476-21A94E062093}</Project>
+      <Name>PeopleSearch.Entity</Name>
     </ProjectReference>
     <ProjectReference Include="..\PeopleSearch\PeopleSearch.csproj">
       <Project>{AE61C7CC-0D7D-40EB-9219-2BF4D24B5BB0}</Project>

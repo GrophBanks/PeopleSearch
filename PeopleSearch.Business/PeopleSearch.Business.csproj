@@ -62,11 +62,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\PeopleSearch.Entity\PeopleSearch.Entity.csproj">
-      <Project>{7c6d7732-7cf4-4fa5-8476-21a94e062093}</Project>
+    <ProjectReference Include="..\PeopleSearch.Entity\PeopleSearch.Entity.csproj">
+      <Project>{7C6D7732-7CF4-4FA5-8476-21A94E062093}</Project>
       <Name>PeopleSearch.Entity</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
