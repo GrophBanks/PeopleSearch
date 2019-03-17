@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -36,6 +37,11 @@ namespace PeopleSearch.Controllers
         [HttpPost]
         public IHttpActionResult AddPerson(AddPersonModel person)
         {
+            if (person.delay > 0)
+            {
+                Thread.Sleep(person.delay * 1000);
+            }
+
             using (var personService = new PersonService())
             {
                 var mappedPerson = Mapper.Map<AddPersonModel, Person>(person);

@@ -1,9 +1,15 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <div class="jumbotron">
-                <h1 class="display-4">Hello, welcome to the People Search Application!</h1>
+            <ngx-loading [show]="saving" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+            <div class="jumbotron" style="margin-left:50px;margin-right:50px;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="display-4">Hello, welcome to the People Search application!</h1>
+                    </div>
+                </div>
                 <form [formGroup]="personForm">
+                    <fieldset></fieldset>
                     <div class="row">
                         <div class="col-md-12">
                             <p>You can add a new person here:</p>
@@ -24,54 +30,90 @@
                             <input id="txtLastName" type="text" formControlName="lastName" class="form-control" />
                         </div>
                     </div>
-                    <div>
-                        <label for="txtAddress">Address: </label><input id="txtAddress" type="text"
-                            formControlName="address" class="form-control" />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="txtAddress">Address: </label><input id="txtAddress" type="text"
+                                formControlName="address" class="form-control" />
+                        </div>
                     </div>
-                    <div>
-                        <label for="txtInterests">Interests: </label><textarea id="txtInterests" type="text"
-                            formControlName="interests" class="form-control"></textarea>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="txtInterests">Interests: </label><textarea id="txtInterests" type="text"
+                                formControlName="interests" class="form-control"></textarea>
+                        </div>
                     </div>
-                    <div>
-                        <label for="txtImageURL">Image URL: </label><input id="txtImageURL" type="text"
-                            formControlName="imageURL" class="form-control" />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="txtImageURL">Image URL: </label><input id="txtImageURL" type="text"
+                                formControlName="imageURL" class="form-control" />
+                        </div>
                     </div>
-                    <div style="margin-top:20px;">
-                        <button type="button" class="btn btn-primary" (click)="addPerson()">Add</button>
+                    <div class="row" style="margin-top:20px;margin-bottom:20px;">
+                        <div class="col-md-1">
+                            <button type="button" class="btn btn-primary" (click)="addPerson()">Add</button>
+                        </div>
+                        <div class="col-md-2">
+                                <input type="number" formControlName="delay" class="form-control" aria-label="Text input with checkbox" placeholder="Include a delay (in seconds)">
+                        </div>
                     </div>
-                    <div class="alert alert-success" role="alert" *ngIf="addPersonResponseMessage != null">
-                        {{addPersonResponseMessage}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-success" role="alert" *ngIf="addPersonResponseMessage">
+                                {{addPersonResponseMessage}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-danger" role="alert" *ngIf="validationMessage">
+                                {{validationMessage}}
+                            </div>
+                        </div>
                     </div>
                 </form>
-                <div style="margin-top:20px;">
-                    <div>
+                <div class="row">
+                    <div class="col-md-12">
                         <p>Or search for a person here:</p>
                         <hr class="my-4">
                     </div>
-                    <div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <input type="text" id="txtLastNameSearch" [formControl]="searchString" class="form-control"
                             placeholder="Search by last name here..." />
                     </div>
-                    <div style="margin-top:20px;">
+                </div>
+                <div class="row" style="margin-top:20px;margin-bottom:20px;">
+                    <div class="col-md-1">
                         <button type="button" class="btn btn-primary" (click)="search()">Search</button>
                     </div>
                 </div>
-                <div>
-                    <ul>
-                        <li *ngFor="let person of searchResults">
-                            {{person.FirstName}} {{person.LastName}} - {{person.Address}}<br>
-                            <p *ngIf="person.Interests">Interests: {{person.Interests}}</p>
-                            <img src={{person.ImageURL}} *ngIf="person.ImageURL" />
-                        </li>
-                    </ul>
+                <div class="row">
+                    <div class="col-md-12;">
+                        <ul style="list-style: none;">
+                            <li *ngFor="let person of searchResults" style="display:inline-block;margin-right:10px;">
+                                <div class="card" style="width: 200px;">
+                                    <img class="card-img-top" src="{{person.ImageURL}}" alt="Card image cap"
+                                        style="width:200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{person.FirstName}} {{person.LastName}}</h5>
+                                        <p class="card-text" *ngIf="person.Address">{{person.Address}}</p>
+                                        <p class="card-text" *ngIf="person.Interests">Interests: {{person.Interests}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div>
-                    <div class="alert alert-danger" role="alert" *ngIf="noResults">
-                        No Results found!
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-danger" role="alert" *ngIf="searchValidationMessage">
+                            {{searchValidationMessage}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>

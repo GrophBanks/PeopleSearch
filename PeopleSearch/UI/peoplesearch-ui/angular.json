@@ -15,7 +15,7 @@
           "options": {
             "outputPath": "dist",
             "index": "src/index.html",
-            "deployUrl": "UI/build/",
+            "deployUrl": "UI/peoplesearch-ui/dist/",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",

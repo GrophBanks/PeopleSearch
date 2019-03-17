@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Images\default-profile-icon-24.jpg" />
     <Content Include="UI\peoplesearch-ui\.gitignore" />
     <Content Include="UI\peoplesearch-ui\e2e\protractor.conf.js" />
     <Content Include="UI\peoplesearch-ui\src\app\app.component.css" />
@@ -201,22 +202,12 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>@echo "running copy"
-REM copy /Y "$(ProjectDir)\UI\peoplesearch-ui\dist\*.*" "$(ProjectDir)\UI\build\</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>@echo "Getting lastest version of npm"
-call npm install -g npm
-@echo "Installing angular CLI"
-call npm install -g @angular/cli
-@echo "install node modules"
-call cd $(ProjectDir)/UI/peoplesearch-ui
-call npm install
-@echo install ng-bootstrap
-npm install --save @ng-bootstrap/ng-bootstrap
-@echo "Build angular project"
-call cd $(ProjectDir)/UI/peoplesearch-ui
-REM call ng build --prod</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -8,6 +8,7 @@ import { HttpService } from './services/http.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule    
+    NgbModule,
+    NgxLoadingModule.forRoot({})
   ],
   providers: [HttpService, HttpClient],
   bootstrap: [AppComponent]
