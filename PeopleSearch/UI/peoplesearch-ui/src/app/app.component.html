@@ -1,11 +1,41 @@
 <div>
+    <form [formGroup]="personForm">
+        <div>
+            <label>Add a new personForm:</label>
+        </div>
+        <div>
+            <label for="txtFirstName">FirstName: </label><input id="txtFirstName" type="text"
+                formControlName="firstName" />
+        </div>
+        <div>
+            <label for="txtLastName">LastName: </label><input id="txtLastName" type="text"
+                formControlName="lastName" />
+        </div>
+        <div>
+            <div>
+                <label for="txtAddress">Address: </label><input id="txtAddress" type="text"
+                    formControlName="address" />
+            </div>
+            <label for="txtInterests">Interests: </label><input id="txtInterests" type="text"
+                formControlName="interests" />
+        </div>
+        <div>
+            <button type="button" (click)="addPerson()">Add Person</button>
+        </div>
+        <div>{{addPersonResponseMessage}}</div>
+        <div>{{newPerson}}</div>
+    </form>
+</div>
+
+<div>
     <div>
-        <label for="txtFirstName">FirstName: </label><input id="txtFirstName" type="text" />
+        <label>Person Search:</label>
     </div>
     <div>
-        <label for="txtLastName">LastName: </label><input id="txtLastName" type="text" />
-    </div>    
+        <label for="txtLastNameSearch">Last Name:</label>
+        <input type="text" id="txtLastNameSearch" [formControl]="searchString" />
+    </div>
     <div>
-            <label for="txtAddress">Address: </label><input id="txtAddress" type="text" />
-        </div>        
+        <button type="button" (click)="search()">Search:</button>
+    </div>
 </div>

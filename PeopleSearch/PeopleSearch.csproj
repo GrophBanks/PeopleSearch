@@ -202,11 +202,19 @@
   </Target>
   <PropertyGroup>
     <PostBuildEvent>@echo "running copy"
-copy /Y "$(ProjectDir)\UI\peoplesearch-ui\dist\*.*" "$(ProjectDir)\UI\build\</PostBuildEvent>
+REM copy /Y "$(ProjectDir)\UI\peoplesearch-ui\dist\*.*" "$(ProjectDir)\UI\build\</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>cd $(ProjectDir)/UI/peoplesearch-ui
-ng build --prod</PreBuildEvent>
+    <PreBuildEvent>@echo "Getting lastest version of npm"
+call npm install -g npm
+@echo "Installing angular CLI"
+call npm install -g @angular/cli
+@echo "install node modules"
+call cd $(ProjectDir)/UI/peoplesearch-ui
+call npm install
+@echo "Build angular project"
+call cd $(ProjectDir)/UI/peoplesearch-ui
+REM call ng build --prod</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
