@@ -63,6 +63,7 @@ export class AppComponent {
 
   validateSearchInput(): boolean {
     var isValid = true;
+    this.searchResults = [];
 
     if(!this.searchString.value){
       this.searchValidationMessage = constants.InvalidSearch;
@@ -73,6 +74,7 @@ export class AppComponent {
   }
 
   clearSearch(): void{
+    this.searchValidationMessage = null;
     this.searchString.reset();
     this.searchResults = [];
   }
