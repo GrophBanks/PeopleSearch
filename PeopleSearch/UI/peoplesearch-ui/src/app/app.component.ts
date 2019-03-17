@@ -11,16 +11,19 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class AppComponent {
 
   searchString = new FormControl('');
+  searchResults: any[] = new Array();
 
   personForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     address: new FormControl(''),
     interests: new FormControl(''),
+    imageURL: new FormControl(''),
   });
 
   addPersonResponseMessage: string;
   newPerson:string;
+  noResults:boolean;
 
   constructor(private httpService: HttpService){
     
@@ -28,12 +31,12 @@ export class AppComponent {
 
   addPerson(): void{
     
-    this.addPersonResponseMessage = '';
+    this.addPersonResponseMessage = null;
 
     let serializedForm = JSON.stringify(this.personForm.getRawValue());
 
     this.httpService.Post("Search", "Add",  serializedForm)
-      .subscribe(response => this.searchResponse(response))
+      .subscribe(response => this.addPersonResponse(response))
   }
 
   search(): void{
@@ -42,16 +45,22 @@ export class AppComponent {
       .subscribe(response => this.searchResponse(response))
   }
 
-  searchResponse(searchResponse: any): void{
-     console.log(JSON.stringify(searchResponse));
+  searchResponse(response: any): void{
+     this.searchResults = JSON.parse(response);
+
+     if(this.searchResults.length == 0 || this.searchResults == null){
+       this.noResults = true;
+     }
   }
 
   addPersonResponse(response: any): void {
-    if(response.PersonId){
-      this.addPersonResponseMessage = "Person Added Successfully!"
-      this.newPerson = response;
-    }
 
-    console.log(JSON.stringify(response));
+    let personObj = JSON.parse(response);
+    if(personObj.PersonId){
+      this.addPersonResponseMessage = "New person successfully added!"
+    }
+    else{
+      this.addPersonResponseMessage = "Error creating new person."
+    }
   }
 }

@@ -1,41 +1,77 @@
-<div>
-    <form [formGroup]="personForm">
-        <div>
-            <label>Add a new personForm:</label>
-        </div>
-        <div>
-            <label for="txtFirstName">FirstName: </label><input id="txtFirstName" type="text"
-                formControlName="firstName" />
-        </div>
-        <div>
-            <label for="txtLastName">LastName: </label><input id="txtLastName" type="text"
-                formControlName="lastName" />
-        </div>
-        <div>
-            <div>
-                <label for="txtAddress">Address: </label><input id="txtAddress" type="text"
-                    formControlName="address" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h1 class="display-4">Hello, welcome to the People Search Application!</h1>
+                <form [formGroup]="personForm">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>You can add a new person here:</p>
+                            <hr class="my-4">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label for="txtFirstName">FirstName: </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="txtFirstName" type="text" formControlName="firstName" class="form-control" />
+                        </div>
+                        <div class="col-md-1">
+                            <label for="txtLastName">LastName: </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="txtLastName" type="text" formControlName="lastName" class="form-control" />
+                        </div>
+                    </div>
+                    <div>
+                        <label for="txtAddress">Address: </label><input id="txtAddress" type="text"
+                            formControlName="address" class="form-control" />
+                    </div>
+                    <div>
+                        <label for="txtInterests">Interests: </label><textarea id="txtInterests" type="text"
+                            formControlName="interests" class="form-control"></textarea>
+                    </div>
+                    <div>
+                        <label for="txtImageURL">Image URL: </label><input id="txtImageURL" type="text"
+                            formControlName="imageURL" class="form-control" />
+                    </div>
+                    <div style="margin-top:20px;">
+                        <button type="button" class="btn btn-primary" (click)="addPerson()">Add</button>
+                    </div>
+                    <div class="alert alert-success" role="alert" *ngIf="addPersonResponseMessage != null">
+                        {{addPersonResponseMessage}}
+                    </div>
+                </form>
+                <div style="margin-top:20px;">
+                    <div>
+                        <p>Or search for a person here:</p>
+                        <hr class="my-4">
+                    </div>
+                    <div>
+                        <input type="text" id="txtLastNameSearch" [formControl]="searchString" class="form-control"
+                            placeholder="Search by last name here..." />
+                    </div>
+                    <div style="margin-top:20px;">
+                        <button type="button" class="btn btn-primary" (click)="search()">Search</button>
+                    </div>
+                </div>
+                <div>
+                    <ul>
+                        <li *ngFor="let person of searchResults">
+                            {{person.FirstName}} {{person.LastName}} - {{person.Address}}<br>
+                            <p *ngIf="person.Interests">Interests: {{person.Interests}}</p>
+                            <img src={{person.ImageURL}} *ngIf="person.ImageURL" />
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="alert alert-danger" role="alert" *ngIf="noResults">
+                        No Results found!
+                    </div>
+                </div>
             </div>
-            <label for="txtInterests">Interests: </label><input id="txtInterests" type="text"
-                formControlName="interests" />
         </div>
-        <div>
-            <button type="button" (click)="addPerson()">Add Person</button>
-        </div>
-        <div>{{addPersonResponseMessage}}</div>
-        <div>{{newPerson}}</div>
-    </form>
-</div>
+    </div>
 
-<div>
-    <div>
-        <label>Person Search:</label>
-    </div>
-    <div>
-        <label for="txtLastNameSearch">Last Name:</label>
-        <input type="text" id="txtLastNameSearch" [formControl]="searchString" />
-    </div>
-    <div>
-        <button type="button" (click)="search()">Search:</button>
-    </div>
 </div>

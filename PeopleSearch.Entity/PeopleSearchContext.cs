@@ -12,6 +12,7 @@ namespace PeopleSearch.Entity
     {
         public PeopleSearchContext() : base()
         {
+            Database.SetInitializer<PeopleSearchContext>(new DropCreateDatabaseAlways<PeopleSearchContext>());
         }
 
         public DbSet<Person> Persons { get; set; }
