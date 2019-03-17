@@ -18,7 +18,7 @@ namespace PeopleSearch.Entity
         public String LastName { get; set; }
         [MaxLength(255)]
         public string Address { get; set; }
-        [MaxLength(255)]
+        [MaxLength(1000)]
         public string ImageURL { get; set; }
         [MaxLength(1000)]
         public string Interests { get; set; }
