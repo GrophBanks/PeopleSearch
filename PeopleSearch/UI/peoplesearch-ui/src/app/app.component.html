@@ -1,0 +1,119 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <ngx-loading [show]="saving" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+            <div class="jumbotron" style="margin-left:50px;margin-right:50px;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="display-4">Hello, welcome to the People Search application!</h1>
+                    </div>
+                </div>
+                <form [formGroup]="personForm">
+                    <fieldset></fieldset>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>You can add a new person here:</p>
+                            <hr class="my-4">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <label for="txtFirstName">FirstName: </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="txtFirstName" type="text" formControlName="firstName" class="form-control" />
+                        </div>
+                        <div class="col-md-1">
+                            <label for="txtLastName">LastName: </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input id="txtLastName" type="text" formControlName="lastName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="txtAddress">Address: </label><input id="txtAddress" type="text"
+                                formControlName="address" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="txtInterests">Interests: </label><textarea id="txtInterests" type="text"
+                                formControlName="interests" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="txtImageURL">Image URL: </label><input id="txtImageURL" type="text"
+                                formControlName="imageURL" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:20px;margin-bottom:20px;">
+                        <div class="col-md-1">
+                            <button type="button" class="btn btn-primary" (click)="addPerson()">Add</button>
+                        </div>
+                        <div class="col-md-2">
+                                <input type="number" formControlName="delay" class="form-control" aria-label="Text input with checkbox" placeholder="Include a delay (in seconds)">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-success" role="alert" *ngIf="addPersonResponseMessage">
+                                {{addPersonResponseMessage}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-danger" role="alert" *ngIf="validationMessage">
+                                {{validationMessage}}
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Or search for a person here:</p>
+                        <hr class="my-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" id="txtLastNameSearch" [formControl]="searchString" class="form-control"
+                            placeholder="Search by last name here..." />
+                    </div>
+                </div>
+                <div class="row" style="margin-top:20px;margin-bottom:20px;">
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-primary" (click)="search()">Search</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12;">
+                        <ul style="list-style: none;">
+                            <li *ngFor="let person of searchResults" style="display:inline-block;margin-right:10px;">
+                                <div class="card" style="width: 200px;">
+                                    <img class="card-img-top" src="{{person.ImageURL}}" alt="Card image cap"
+                                        style="width:200px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{person.FirstName}} {{person.LastName}}</h5>
+                                        <p class="card-text" *ngIf="person.Address">{{person.Address}}</p>
+                                        <p class="card-text" *ngIf="person.Interests">Interests: {{person.Interests}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-danger" role="alert" *ngIf="searchValidationMessage">
+                            {{searchValidationMessage}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

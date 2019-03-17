@@ -329,6 +329,10 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 
+<<<<<<< HEAD
+#angular build output
+**/PeopleSearch/UI/build
+=======
 # Logs
 logs
 *.log
