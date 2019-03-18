@@ -97,6 +97,16 @@
     <Content Include="Global.asax" />
     <Content Include="Images\default-profile-icon-24.jpg" />
     <Content Include="UI\peoplesearch-ui\.gitignore" />
+    <Content Include="UI\peoplesearch-ui\dist\3rdpartylicenses.txt" />
+    <Content Include="UI\peoplesearch-ui\dist\assets\default-image.jpg" />
+    <Content Include="UI\peoplesearch-ui\dist\assets\favicon.ico" />
+    <Content Include="UI\peoplesearch-ui\dist\es2015-polyfills.c5dd28b362270c767b34.js" />
+    <Content Include="UI\peoplesearch-ui\dist\favicon.ico" />
+    <Content Include="UI\peoplesearch-ui\dist\index.html" />
+    <Content Include="UI\peoplesearch-ui\dist\main.9d8c855f303ee1359a23.js" />
+    <Content Include="UI\peoplesearch-ui\dist\polyfills.8bbb231b43165d65d357.js" />
+    <Content Include="UI\peoplesearch-ui\dist\runtime.5529909cd98f02f0ad14.js" />
+    <Content Include="UI\peoplesearch-ui\dist\styles.280e991c5992f8630bc9.css" />
     <Content Include="UI\peoplesearch-ui\e2e\protractor.conf.js" />
     <Content Include="UI\peoplesearch-ui\src\app\app.component.css" />
     <Content Include="UI\peoplesearch-ui\src\app\app.component.html" />
