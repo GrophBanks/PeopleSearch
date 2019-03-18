@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { HttpService } from './services/http.service';
 import { Person} from './models/person';
 import { FormControl, FormGroup } from '@angular/forms';
-
+import { constants } from './constants'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -63,20 +63,30 @@ export class AppComponent {
 
   validateSearchInput(): boolean {
     var isValid = true;
+    this.searchResults = [];
 
     if(!this.searchString.value){
-      this.searchValidationMessage = "Invalid search term";
+      this.searchValidationMessage = constants.InvalidSearch;
       isValid = false;
     }
 
     return isValid;
   }
 
+  clearSearch(): void{
+    this.searchValidationMessage = null;
+    this.searchString.reset();
+    this.searchResults = [];
+  }
+
   searchResponse(response: any): void{
-     this.searchResults = JSON.parse(response);
+     
+    this.clearSearch();
+
+    this.searchResults = JSON.parse(response);
 
      if(this.searchResults.length == 0 || this.searchResults == null){
-       this.searchValidationMessage = "No results found!";
+       this.searchValidationMessage = constants.NoResultsMessage;
      }
   }
 
@@ -85,10 +95,10 @@ export class AppComponent {
     let personObj = JSON.parse(response);
     if(personObj.PersonId){
       this.clearForm();
-      this.addPersonResponseMessage = "New person successfully added!"
+      this.addPersonResponseMessage = constants.AddUserSuccess;
     }
     else{
-      this.addPersonResponseMessage = "Error creating new person."
+      this.addPersonResponseMessage = constants.AddUserError;
     }
 
     this.saving = false;
@@ -101,7 +111,7 @@ export class AppComponent {
     var isValid = true;
 
     if(!this.personForm.controls['firstName'].value || !this.personForm.controls['lastName'].value ){
-      this.validationMessage = "First and Last Name are required."
+      this.validationMessage = constants.InputValidationMessage;
       isValid = false;
     }
 

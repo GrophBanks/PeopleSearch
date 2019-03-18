@@ -1,16 +1,38 @@
 import { AppPage } from './app.po';
 import { browser, logging } from 'protractor';
+import { constants } from '../../src/app/constants';
 
-describe('workspace-project App', () => {
+describe('People search tests', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should add a new person', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to peoplesearch-ui!');
+    page.fillFormData();
+    page.clickAdd();
+
+    expect(page.getAddpersonMessage()).toEqual(constants.AddUserSuccess);
+  });
+
+  it('should display validation message if required field is missing', function(){
+    
+    //click the add button without filling out any fields
+    page.clickAdd();
+
+    expect(page.getValidationMessage()).toEqual(constants.InputValidationMessage);
+  });
+
+  it('should return search results', function(){
+    page.fillFormData();
+    page.clickAdd();
+
+    page.addSearchTerm('Person');
+    page.clickSearchButton();
+
+    expect(page.getSearchResultCount()).toBeGreaterThan(0);
   });
 
   afterEach(async () => {

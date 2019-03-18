@@ -18,55 +18,55 @@
                     </div>
                     <div class="row">
                         <div class="col-md-1">
-                            <label for="txtFirstName">FirstName: </label>
+                            <label for="txtFirstName">First Name: </label>
                         </div>
                         <div class="col-md-4">
-                            <input id="txtFirstName" type="text" formControlName="firstName" class="form-control" />
+                            <input id="txtFirstName" type="text" formControlName="firstName" class="form-control" maxlength="255" />
                         </div>
                         <div class="col-md-1">
-                            <label for="txtLastName">LastName: </label>
+                            <label for="txtLastName">Last Name: </label>
                         </div>
                         <div class="col-md-4">
-                            <input id="txtLastName" type="text" formControlName="lastName" class="form-control" />
+                            <input id="txtLastName" type="text" formControlName="lastName" class="form-control"  maxlength="255"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <label for="txtAddress">Address: </label><input id="txtAddress" type="text"
-                                formControlName="address" class="form-control" />
+                                formControlName="address" class="form-control"  maxlength="255"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <label for="txtInterests">Interests: </label><textarea id="txtInterests" type="text"
-                                formControlName="interests" class="form-control"></textarea>
+                                formControlName="interests" class="form-control" maxlength="1000"></textarea>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <label for="txtImageURL">Image URL: </label><input id="txtImageURL" type="text"
-                                formControlName="imageURL" class="form-control" />
+                                formControlName="imageURL" class="form-control"  maxlength="1000"/>
                         </div>
                     </div>
                     <div class="row" style="margin-top:20px;margin-bottom:20px;">
                         <div class="col-md-1">
-                            <button type="button" class="btn btn-primary" (click)="addPerson()">Add</button>
+                            <button id="bttnAddPerson" type="button" class="btn btn-primary" (click)="addPerson()">Add</button>
                         </div>
-                        <div class="col-md-2">
-                                <input type="number" formControlName="delay" class="form-control" aria-label="Text input with checkbox" placeholder="Include a delay (in seconds)">
+                        <div class="col-md-3">
+                                <input type="number" formControlName="delay" class="form-control" aria-label="Text input with checkbox" placeholder="Include a delay (in seconds)" style="width:250px;">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="alert alert-success" role="alert" *ngIf="addPersonResponseMessage">
-                                {{addPersonResponseMessage}}
+                                <span id="spnAddPersonResponseMessage">{{addPersonResponseMessage}}</span>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="alert alert-danger" role="alert" *ngIf="validationMessage">
-                                {{validationMessage}}
+                                <span id="spnVaildationMessage">{{validationMessage}}</span>
                             </div>
                         </div>
                     </div>
@@ -85,16 +85,15 @@
                 </div>
                 <div class="row" style="margin-top:20px;margin-bottom:20px;">
                     <div class="col-md-1">
-                        <button type="button" class="btn btn-primary" (click)="search()">Search</button>
+                        <button id="bttnSearch" type="button" class="btn btn-primary" (click)="search()">Search</button>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12;">
                         <ul style="list-style: none;">
-                            <li *ngFor="let person of searchResults" style="display:inline-block;margin-right:10px;">
-                                <div class="card" style="width: 200px;">
-                                    <img class="card-img-top" src="{{person.ImageURL}}" alt="Card image cap"
-                                        style="width:200px;">
+                            <li *ngFor="let person of searchResults" style="display:inline-block;margin-right:10px;" class="searchResultsCard">
+                                <div class="card" style="width: 200px;min-height:200px;">
+                                    <img class="card-img-top" src="{{person.ImageURL}}" alt="Card image cap" style="width:200px;">
                                     <div class="card-body">
                                         <h5 class="card-title">{{person.FirstName}} {{person.LastName}}</h5>
                                         <p class="card-text" *ngIf="person.Address">{{person.Address}}</p>
@@ -109,7 +108,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="alert alert-danger" role="alert" *ngIf="searchValidationMessage">
-                            {{searchValidationMessage}}
+                            <span id="spnSearchValidationMessage">{{searchValidationMessage}}</span>
                         </div>
                     </div>
                 </div>
