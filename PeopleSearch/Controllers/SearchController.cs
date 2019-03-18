@@ -25,6 +25,9 @@ namespace PeopleSearch.Controllers
                 return BadRequest("Invalid search string");
             }
 
+            //to simulate a slow resonse
+            Thread.Sleep(5000);
+
             using (var personService = new PersonService())
             {
                 var searchResults = personService.Search(searchString);
@@ -37,11 +40,6 @@ namespace PeopleSearch.Controllers
         [HttpPost]
         public IHttpActionResult AddPerson(AddPersonModel person)
         {
-            if (person.delay > 0)
-            {
-                Thread.Sleep(person.delay * 1000);
-            }
-
             using (var personService = new PersonService())
             {
                 var mappedPerson = Mapper.Map<AddPersonModel, Person>(person);

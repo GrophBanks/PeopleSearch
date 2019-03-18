@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import { HttpService } from './services/http.service';
-import { Person} from './models/person';
 import { FormControl, FormGroup } from '@angular/forms';
 import { constants } from './constants'
 @Component({
@@ -19,14 +18,14 @@ export class AppComponent {
     address: new FormControl(),
     interests: new FormControl(),
     imageURL: new FormControl(),
-    delay: new FormControl()
+    age: new FormControl(),
   });
 
   addPersonResponseMessage: string;
   validationMessage: string;
   searchValidationMessage: string;
   newPerson:string;
-  saving:boolean;
+  loading:boolean;
 
   constructor(private httpService: HttpService){
     
@@ -40,7 +39,7 @@ export class AppComponent {
     if(this.validateInputs()){
 
       this.personForm.disable();
-      this.saving = true;
+      this.loading = true;
 
       let serializedForm = JSON.stringify(this.personForm.getRawValue());
 
@@ -54,8 +53,8 @@ export class AppComponent {
   }
 
   search(): void{
-
     if(this.validateSearchInput()){
+      this.loading = true;
       this.httpService.Get("Search", undefined, this.searchString.value)
       .subscribe(response => this.searchResponse(response));
     }
@@ -81,6 +80,8 @@ export class AppComponent {
 
   searchResponse(response: any): void{
      
+    this.loading = false
+
     this.clearSearch();
 
     this.searchResults = JSON.parse(response);
@@ -101,7 +102,7 @@ export class AppComponent {
       this.addPersonResponseMessage = constants.AddUserError;
     }
 
-    this.saving = false;
+    this.loading = false;
     this.personForm.enable();
 
   }
