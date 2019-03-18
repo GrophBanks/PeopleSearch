@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <ngx-loading [show]="saving" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
-            <div class="jumbotron" style="margin-left:50px;margin-right:50px;">
+            <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+            <div class="jumbotron" style="margin-left:200px;margin-right:200px;">
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="display-4">Hello, welcome to the People Search application!</h1>
@@ -17,17 +17,17 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-1">
+                        <div class="col-md-3">
                             <label for="txtFirstName">First Name: </label>
-                        </div>
-                        <div class="col-md-4">
                             <input id="txtFirstName" type="text" formControlName="firstName" class="form-control" maxlength="255" />
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-3">
                             <label for="txtLastName">Last Name: </label>
-                        </div>
-                        <div class="col-md-4">
                             <input id="txtLastName" type="text" formControlName="lastName" class="form-control"  maxlength="255"/>
+                        </div>
+                        <div class="col-md-1">
+                            <label for="txtAge">Age: </label>
+                            <input type="number" class="form-control" id="txtAge" formControlName="age">
                         </div>
                     </div>
                     <div class="row">
@@ -52,9 +52,6 @@
                         <div class="col-md-1">
                             <button id="bttnAddPerson" type="button" class="btn btn-primary" (click)="addPerson()">Add</button>
                         </div>
-                        <div class="col-md-3">
-                                <input type="number" formControlName="delay" class="form-control" aria-label="Text input with checkbox" placeholder="Include a delay (in seconds)" style="width:250px;">
-                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -77,17 +74,20 @@
                         <hr class="my-4">
                     </div>
                 </div>
+                <form (submit)="search()">
                 <div class="row">
                     <div class="col-md-12">
                         <input type="text" id="txtLastNameSearch" [formControl]="searchString" class="form-control"
-                            placeholder="Search by last name here..." />
+                            placeholder="Search by first or last name here..." />
                     </div>
                 </div>
                 <div class="row" style="margin-top:20px;margin-bottom:20px;">
                     <div class="col-md-1">
                         <button id="bttnSearch" type="button" class="btn btn-primary" (click)="search()">Search</button>
+                        <button type="submit" style="display:none">hidden submit</button>
                     </div>
                 </div>
+                </form>
                 <div class="row">
                     <div class="col-md-12;">
                         <ul style="list-style: none;">
@@ -96,6 +96,7 @@
                                     <img class="card-img-top" src="{{person.ImageURL}}" alt="Card image cap" style="width:200px;">
                                     <div class="card-body">
                                         <h5 class="card-title">{{person.FirstName}} {{person.LastName}}</h5>
+                                        <p class="card-text" *ngIf="person.Age">Age: {{person.Age}}</p>
                                         <p class="card-text" *ngIf="person.Address">{{person.Address}}</p>
                                         <p class="card-text" *ngIf="person.Interests">Interests: {{person.Interests}}
                                         </p>

@@ -11,6 +11,7 @@ export class AppPage {
     element(by.id('txtLastName')).sendKeys('Person');
     element(by.id('txtAddress')).sendKeys('123 Test St, Anywhere USA 90210');
     element(by.id('txtInterests')).sendKeys('Test Person enjoys filling out test data.');
+    element(by.id('txtAge')).sendKeys('99');
   }
 
   clickAdd(){

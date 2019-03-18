@@ -48,9 +48,14 @@ namespace PeopleSearch.Business.Services
             return context.Get<Person>(x => x.PersonId == personId);
         }
 
+        /// <summary>
+        /// Searches for user by first and last name
+        /// </summary>
+        /// <param name="searchString"></param>
+        /// <returns></returns>
         public List<Person> Search(string searchString)
         {
-            return context.GetList<Person>(x => x.LastName.Contains(searchString));
+            return context.GetList<Person>(x => x.LastName.Contains(searchString) || x.FirstName.Contains(searchString));
         }
 
         public void Dispose()
