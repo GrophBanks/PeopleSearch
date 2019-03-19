@@ -96,14 +96,6 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Images\default-profile-icon-24.jpg" />
-    <Content Include="UI\peoplesearch-ui\.gitignore" />
-    <Content Include="UI\peoplesearch-ui\e2e\protractor.conf.js" />
-    <Content Include="UI\peoplesearch-ui\src\app\app.component.css" />
-    <Content Include="UI\peoplesearch-ui\src\app\app.component.html" />
-    <Content Include="UI\peoplesearch-ui\src\favicon.ico" />
-    <Content Include="UI\peoplesearch-ui\src\index.html" />
-    <Content Include="UI\peoplesearch-ui\src\karma.conf.js" />
-    <Content Include="UI\peoplesearch-ui\src\styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -119,19 +111,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="UI\peoplesearch-ui\.editorconfig" />
-    <Content Include="UI\peoplesearch-ui\angular.json" />
-    <Content Include="UI\peoplesearch-ui\e2e\tsconfig.e2e.json" />
-    <Content Include="UI\peoplesearch-ui\package-lock.json" />
-    <Content Include="UI\peoplesearch-ui\package.json" />
-    <Content Include="UI\peoplesearch-ui\README.md" />
-    <Content Include="UI\peoplesearch-ui\src\assets\.gitkeep" />
-    <Content Include="UI\peoplesearch-ui\src\browserslist" />
-    <Content Include="UI\peoplesearch-ui\src\tsconfig.app.json" />
-    <Content Include="UI\peoplesearch-ui\src\tsconfig.spec.json" />
-    <Content Include="UI\peoplesearch-ui\src\tslint.json" />
-    <Content Include="UI\peoplesearch-ui\tsconfig.json" />
-    <Content Include="UI\peoplesearch-ui\tslint.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -141,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UI\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PeopleSearch.Business\PeopleSearch.Business.csproj">
@@ -151,19 +131,6 @@
       <Project>{7C6D7732-7CF4-4FA5-8476-21A94E062093}</Project>
       <Name>PeopleSearch.Entity</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="UI\peoplesearch-ui\e2e\src\app.e2e-spec.ts" />
-    <TypeScriptCompile Include="UI\peoplesearch-ui\e2e\src\app.po.ts" />
-    <TypeScriptCompile Include="UI\peoplesearch-ui\src\app\app-routing.module.ts" />
-    <TypeScriptCompile Include="UI\peoplesearch-ui\src\app\app.component.spec.ts" />
-    <TypeScriptCompile Include="UI\peoplesearch-ui\src\app\app.component.ts" />
-    <TypeScriptCompile Include="UI\peoplesearch-ui\src\app\app.module.ts" />
-    <TypeScriptCompile Include="UI\peoplesearch-ui\src\environments\environment.prod.ts" />
-    <TypeScriptCompile Include="UI\peoplesearch-ui\src\environments\environment.ts" />
-    <TypeScriptCompile Include="UI\peoplesearch-ui\src\main.ts" />
-    <TypeScriptCompile Include="UI\peoplesearch-ui\src\polyfills.ts" />
-    <TypeScriptCompile Include="UI\peoplesearch-ui\src\test.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
