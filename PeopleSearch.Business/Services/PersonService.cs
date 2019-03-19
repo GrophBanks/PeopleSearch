@@ -31,7 +31,7 @@ namespace PeopleSearch.Business.Services
         public Person Add(Person person)
         {
             person.PersonId = (person.PersonId == null ? Guid.NewGuid() : person.PersonId);
-            person.ImageURL = (String.IsNullOrEmpty(person.ImageURL) ? "/UI/peoplesearch-ui/dist/assets/default-image.jpg" : person.ImageURL);
+            person.ImageURL = (String.IsNullOrEmpty(person.ImageURL) ? "/UI/build/assets/default-image.jpg" : person.ImageURL);
 
             var newPerson = context.Save<Person>(person);
 
