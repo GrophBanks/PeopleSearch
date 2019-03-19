@@ -11,6 +11,7 @@ namespace PeopleSearch
     {
         protected void Application_Start()
         {
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
             RouteTable.Routes.Ignore("api*");
