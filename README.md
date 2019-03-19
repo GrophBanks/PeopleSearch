@@ -9,4 +9,6 @@ https://github.com/GrophBanks/PeopleSearch/tree/master/PeopleSearch/UI/peoplesea
 
 Development for the UI was done in VS Code and the source for it is not included in the Visual Studio project. The build output is committed in source control to facilitate starting the application as easily as possible. 
 
+To run UI integration tests please ensure the application is running in debug mode, change to the UI directory mentioned above in terminal and run the command: ng e2e
+
 Thanks for looking!
