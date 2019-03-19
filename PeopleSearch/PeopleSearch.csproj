@@ -166,13 +166,14 @@
   </ProjectExtensions>
   <PropertyGroup>
     <PostBuildEvent>@echo changing to  UI directory
-cd $(SolutionDir)/UI/peoplesearch-ui
-@installing NPM
+cd $(ProjectDir)/UI/peoplesearch-ui
+@echo installing NPM
 call npm install -g npm
-@installing node modules
+@echo installing node modules
 call npm install
-@installing angular cli
-call npm install -g @angular/cli</PostBuildEvent>
+@echo installing angular cli
+call npm install -g @angular/cli
+call npm install --save-dev @angular-devkit/build-angular</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
